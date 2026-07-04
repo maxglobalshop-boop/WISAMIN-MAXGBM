@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WISAMIN · Competitor Radar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0f14; --panel:#131a23; --panel2:#1a232e; --line:#25313f;
+  --text:#e8eef5; --muted:#8ea0b5; --accent:#28e0a8; --accent2:#7c5cff;
+  --tiktok:#ff2d55; --facebook:#1877f2; --youtube:#ff0000; --x:#1da1f2;
+  --hot:#ff4d5e; --warn:#ffb020; --ok:#28e0a8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Prompt','Sarabun',sans-serif;line-height:1.5;padding-bottom:60px}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+
+header{background:linear-gradient(135deg,#0e1520,#141d2b);border-bottom:1px solid var(--line);padding:22px 0;position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.brandrow{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:12px}
+.logo .mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;color:#08131a}
+.logo h1{font-size:19px;font-weight:600;letter-spacing:.3px}
+.logo p{font-size:12px;color:var(--muted)}
+.datepick{display:flex;align-items:center;gap:8px}
+.datepick select{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-family:inherit;font-size:14px}
+.live{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--accent);border:1px solid var(--line);padding:6px 10px;border-radius:20px}
+.live .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 1.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(40,224,168,.5)}70%{box-shadow:0 0 0 8px rgba(40,224,168,0)}100%{box-shadow:0 0 0 0 rgba(40,224,168,0)}}
+
+.headline{margin:22px 0 6px;font-size:15px;color:var(--text);background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:14px 16px}
+.headline b{color:var(--accent)}
+
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:18px 0}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+.kpi .n{font-size:28px;font-weight:700}
+.kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+.kpi.tiktok .n{color:var(--tiktok)} .kpi.facebook .n{color:var(--facebook)}
+.kpi.youtube .n{color:var(--youtube)} .kpi.x .n{color:var(--x)}
+
+.tabs{display:flex;gap:6px;margin:24px 0 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.tab{padding:10px 16px;font-size:14px;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;font-weight:500}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab:hover{color:var(--text)}
+
+.search{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px 16px;color:var(--text);font-family:inherit;font-size:15px;margin-bottom:14px}
+.search:focus{outline:none;border-color:var(--accent)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.filters .lbl{font-size:12px;color:var(--muted);align-self:center;margin-right:2px}
+.chip{padding:7px 14px;border-radius:20px;font-size:13px;background:var(--panel2);border:1px solid var(--line);color:var(--muted);cursor:pointer}
+.chip.active{background:var(--accent);color:#08131a;border-color:var(--accent);font-weight:600}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;transition:.15s;position:relative;overflow:hidden}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.badge{font-size:11px;font-weight:600;padding:4px 9px;border-radius:6px;white-space:nowrap}
+.b-tiktok{background:rgba(255,45,85,.15);color:#ff6b85} .b-facebook{background:rgba(24,119,242,.15);color:#5a9bff}
+.b-youtube{background:rgba(255,0,0,.15);color:#ff5c5c} .b-x{background:rgba(29,161,242,.15);color:#5ec1ff}
+.b-yt{background:rgba(255,0,0,.15);color:#ff5c5c}
+.tier{font-size:11px;font-weight:600;padding:4px 9px;border-radius:6px}
+.t-viral{background:rgba(255,77,94,.18);color:#ff8593} .t-high{background:rgba(255,176,32,.18);color:#ffca6b} .t-medium{background:rgba(142,160,181,.15);color:#a9b8c9}
+.card h3{font-size:16px;font-weight:600;line-height:1.35}
+.card .brand{font-size:13px;color:var(--accent);font-weight:500}
+.card .cat{font-size:12px;color:var(--muted)}
+.card .why{font-size:13px;color:#c4d0dd;background:var(--panel2);border-radius:8px;padding:9px 11px}
+.card .why b{color:var(--text)}
+.card .threat{font-size:12px;display:flex;align-items:center;gap:6px}
+.card .threat .lv{font-weight:600}
+.card .meta{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid var(--line)}
+.card .creator{font-size:12px;color:var(--muted)}
+.card .link{font-size:13px;color:var(--accent);font-weight:600;display:inline-flex;align-items:center;gap:5px}
+.card .link:hover{text-decoration:underline}
+
+.ins{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:16px}
+.inscard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;border-top:3px solid var(--accent2)}
+.inscard h3{font-size:16px;margin-bottom:10px}
+.inscard .row{font-size:13px;margin:8px 0;color:#c4d0dd}
+.inscard .row b{color:var(--accent)}
+.idea{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;border-left:3px solid var(--accent)}
+.idea h3{font-size:16px;margin-bottom:8px}
+.idea .hook{font-size:14px;font-style:italic;color:var(--warn);background:var(--panel2);padding:10px;border-radius:8px;margin:8px 0}
+.idea .k{font-size:13px;margin:6px 0;color:#c4d0dd}
+.idea .k b{color:var(--text)}
+.fda{display:inline-block;font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(40,224,168,.15);color:var(--accent);margin-top:6px}
+.trendlist{display:flex;flex-direction:column;gap:10px}
+.trend{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:14px;display:flex;gap:12px;align-items:center}
+.trend .num{width:28px;height:28px;border-radius:8px;background:var(--accent2);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0}
+
+.section-title{font-size:14px;color:var(--muted);margin:6px 0 12px;text-transform:uppercase;letter-spacing:1px}
+.hide{display:none}
+footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px;padding-top:20px;border-top:1px solid var(--line)}
+footer .note{max-width:700px;margin:0 auto 8px}
+@media(max-width:640px){.logo h1{font-size:16px}.kpi .n{font-size:22px}}
+</style>
+</head>
+<body>
+<header><div class="wrap brandrow">
+  <div class="logo">
+    <div class="mark">W</div>
+    <div><h1>WISAMIN · Competitor Radar</h1><p>เรดาร์คอนเทนต์คู่แข่งอาหารเสริมไทย · รายวัน</p></div>
+  </div>
+  <div class="datepick">
+    <span class="live"><span class="dot"></span> LIVE</span>
+    <select id="dateSel" onchange="selectDate(this.value)"></select>
+  </div>
+</div></header>
+
+<div class="wrap">
+  <div class="headline" id="headline"></div>
+  <div class="kpis" id="kpis"></div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="feed" onclick="switchTab('feed')">📡 คอนเทนต์คู่แข่ง</div>
+    <div class="tab" data-tab="insight" onclick="switchTab('insight')">🧠 Customer Insight</div>
+    <div class="tab" data-tab="idea" onclick="switchTab('idea')">💡 ไอเดียคอนเทนต์ WISAMIN</div>
+    <div class="tab" data-tab="trend" onclick="switchTab('trend')">📈 เทรนด์</div>
+  </div>
+
+  <div id="tab-feed">
+    <input id="search" class="search" type="text" placeholder="🔍 ค้นหาแบรนด์ / คอนเทนต์ / คีย์เวิร์ด…" oninput="renderFeed()">
+    <div class="filters" id="chFilters"></div>
+    <div class="filters" id="catFilters"></div>
+    <div class="grid" id="feed"></div>
+  </div>
+  <div id="tab-insight" class="hide"><div class="ins" id="insights"></div></div>
+  <div id="tab-idea" class="hide"><div class="section-title">คอนเทนต์ต่อยอดที่ใช้ได้จริง + ปลอดคำต้องห้าม อย.</div><div class="ins" id="ideas"></div></div>
+  <div id="tab-trend" class="hide"><div class="trendlist" id="trends"></div></div>
+
+  <footer>
+    <div class="note">ข้อมูลรวบรวมจากการค้นเว็บสาธารณะ (TikTok/Facebook/YouTube/X) เพื่อวิเคราะห์การแข่งขัน · ยอด engagement จัดระดับเชิงคุณภาพ ดูวิธีเก็บตัวเลขแม่นยำใน PLAYBOOK.md</div>
+    <div>สร้างเมื่อ 2026-07-04 17:23 · อัปเดตรายวันด้วย <code>python3 build.py</code></div>
+  </footer>
+</div>
+
+<script>
+const DATA = [{"date": "2026-07-04", "generated_at": "2026-07-04", "brand": "WISAMIN", "brand_categories": ["โปรตีนพืช", "คอลลาเจน", "พรีไบโอติก/ลำไส้", "คุมน้ำหนัก/ชาเขียว", "วิตามิน"], "summary": {"headline": "คู่แข่งเร่งเครื่องคอนเทนต์สาย ‘คอลลาเจนผิวใส’ + ‘ลำไส้/ขับถ่าย’ โดยใช้หมอ/เภสัชเป็นผู้เล่าเพื่อเลี่ยงคำต้องห้าม อย.", "top_theme": "Doctor-led credibility content (หมอ/เภสัชอธิบายกลไก) กำลังกินยอด engagement มากกว่าโฆษณาขายตรง", "channel_counts": {"TikTok": 8, "Facebook": 2, "YouTube": 2, "X": 4}, "note_on_metrics": "ยอดวิว/ไลก์ที่แม่นยำต้องดึงผ่าน API ของแต่ละแพลตฟอร์ม (ดู PLAYBOOK.md). รอบนี้จัดระดับ engagement เชิงคุณภาพ (viral/high/medium) จากสัญญาณ: ตัวเลขที่แพลตฟอร์มโชว์, การถูกอ้างถึงซ้ำ, และการติดหน้า discover/แท็ก"}, "competitors": [{"brand": "Woma Balance (ผ่าน พิมรี่พาย)", "category": "พรีไบโอติก/ลำไส้", "channel": "TikTok", "creator": "@pimrypie__tiktok", "title": "Woma Balance โพรไบโอติก — พิมรี่พายขายทุกอย่าง", "url": "https://www.tiktok.com/@pimrypie__tiktok/video/7537186173266005266", "engagement_tier": "viral", "format": "Live/Hard-sell โดย KOL ระดับท็อป", "why_it_works": "ใช้พลัง KOL แมสที่มีฐานคนดูหลักล้าน ดันสินค้าลำไส้/ขับถ่ายให้กลายเป็นของ ‘ต้องมี’ ในไลฟ์ ปิดการขายด้วยความเชื่อในตัวบุคคล", "threat_to_wisamin": "สูง — ชนหมวดพรีไบโอติกตรงกับ Wemin Bio ของ WISAMIN โดยตรง และใช้ KOL ที่ WISAMIN ยังไม่มี"}, {"brand": "หมอเจด (KOL สายให้ความรู้ – ดันหลายแบรนด์)", "category": "พรีไบโอติก/ลำไส้", "channel": "TikTok", "creator": "@drjade_health", "title": "โพรไบโอติกส์ กินเวลาไหนดีสุด?", "url": "https://www.tiktok.com/@drjade_health/video/7424003118532283655", "engagement_tier": "high", "format": "Educational / หมออธิบายสั้น 30-60 วิ", "why_it_works": "ตอบคำถามที่คนค้นหาจริง (‘กินตอนไหน’) สร้าง trust ด้วยตำแหน่งหมอ — คอนเทนต์ความรู้แบบนี้ถูกเซฟ/แชร์สูงและปลอดภัยเรื่อง อย.", "threat_to_wisamin": "กลาง — เป็นแม่แบบคอนเทนต์ที่ WISAMIN ควรก็อปโครงสร้าง (how-to กินให้ได้ผล)"}, {"brand": "รีวิวโพรไบโอติก 7-11 (หมอแอม Gastro)", "category": "พรีไบโอติก/ลำไส้", "channel": "TikTok", "creator": "@doctoram.gastro", "title": "รีวิวโยเกิร์ต/โพรไบโอติกในเซเว่น โดยหมอทางเดินอาหาร", "url": "https://www.tiktok.com/@doctoram.gastro/video/7346912529928441096", "engagement_tier": "high", "format": "Review + Myth-busting โดยแพทย์เฉพาะทาง", "why_it_works": "เอาของใกล้ตัว (เซเว่น) มาเล่าโดยผู้เชี่ยวชาญ = เข้าถึงง่าย + น่าเชื่อถือ คนคอมเมนต์ถามต่อเยอะ", "threat_to_wisamin": "กลาง"}, {"brand": "FRESH DOZE", "category": "คอลลาเจน", "channel": "TikTok", "creator": "หลาย affiliate/รีวิวเวอร์", "title": "คอลลาเจน กลูต้า + วิตามินซี รสเคียวโฮ (สีม่วง)", "url": "https://www.tiktok.com/tag/freshdoze", "engagement_tier": "viral", "format": "UGC/Affiliate รีวิวจำนวนมาก (seeding กว้าง)", "why_it_works": "แพ็กเกจสีม่วงจำง่าย + รสชาติอร่อยเป็นจุดขาย (ดื่มเพลิน) ปูพรมด้วยรีวิวเวอร์หลายร้อยคน สร้างภาพ ‘ใครๆก็กิน’", "threat_to_wisamin": "สูง — โมเดล affiliate seeding แบบนี้คือสิ่งที่ทำให้แบรนด์เล็กโตเร็วบน TikTok Shop"}, {"brand": "AKANE", "category": "คอลลาเจน", "channel": "TikTok", "creator": "หลาย affiliate", "title": "คอลลาเจน + ไลโคปีน ดูแลผิว", "url": "https://www.tiktok.com/tag/akane", "engagement_tier": "high", "format": "รีวิวก่อน/หลัง + ชูส่วนผสม (ไลโคปีน)", "why_it_works": "ชูสารสกัดที่ฟังดูพรีเมียม (ไลโคปีน) แยกตัวจากคอลลาเจนทั่วไป จับกลุ่มคนอยากผิวออร่า", "threat_to_wisamin": "กลาง-สูง"}, {"brand": "Glory Collagen", "category": "คอลลาเจน", "channel": "TikTok", "creator": "@pantipa.a และรีวิวเวอร์", "title": "กลอรี่ คอลลาเจน + วิตามินดริปผิว (สินค้าขายดีใน TikTok)", "url": "https://www.tiktok.com/@pantipa.a/video/7434510513268215048", "engagement_tier": "high", "format": "Q&A ตอบคอมเมนต์ + ผูกกับเทรนด์ ‘วิตามินดริปผิว’", "why_it_works": "เกาะเทรนด์ ‘ดริปผิว’ ที่กำลังฮิต แปลงเป็นเวอร์ชันกินได้ในราคาเข้าถึงง่าย", "threat_to_wisamin": "กลาง"}, {"brand": "ชาเม่ (Chame) Sye S Cap", "category": "คุมน้ำหนัก/คุมหิว", "channel": "Facebook", "creator": "เพจตัวแทน (เช่น cheepaoseven)", "title": "Sye S Cap สูตรใหม่ — คุมหิว หุ่นสับ (เป็นสูตร Vegan)", "url": "https://www.facebook.com/cheepaoseven/posts/736014621906179", "engagement_tier": "high", "format": "Hard-sell + ชูจุดขาย vegan/คุมหิว", "why_it_works": "แบรนด์เก่าแก่ที่ยังแข็งบน Facebook เครือข่ายตัวแทนช่วยกันดัน + จับ pain ‘หิวจุกจิก’", "threat_to_wisamin": "สูง — ชนหมวดคุมน้ำหนักที่ตรงกับ MINTEA (ชาเขียว) ของ WISAMIN"}, {"brand": "Nutrilite (Amway)", "category": "พรีไบโอติก/ลำไส้", "channel": "YouTube/Web", "creator": "Nutrilite Thailand (แบรนด์)", "title": "พรีไบโอติก อาหารของจุลินทรีย์ในลำไส้ — คอนเทนต์ให้ความรู้", "url": "https://nutrilite.co.th/th/article/what-is-prebiotic", "engagement_tier": "medium", "format": "Educational content marketing (SEO + วิดีโอ)", "why_it_works": "เล่นเกม authority/ความรู้ระยะยาว ปั้นแบรนด์เป็น ‘ผู้เชี่ยวชาญลำไส้’ ไม่ใช่แค่คนขาย", "threat_to_wisamin": "กลาง (คนละกลุ่มราคา แต่แย่ง search intent เรื่องลำไส้)"}, {"brand": "Colon Man", "category": "พรีไบโอติก/ดีท็อกซ์ลำไส้", "channel": "Facebook", "creator": "@colonmanthailand", "title": "โพรไบโอติก vs พรีไบโอติก — คู่หูดูแลลำไส้", "url": "https://www.facebook.com/colonmanthailand", "engagement_tier": "medium", "format": "Infographic ให้ความรู้ + brand education", "why_it_works": "ชื่อแบรนด์จำง่าย (Colon = ลำไส้) + คอนเทนต์เปรียบเทียบที่คนแชร์ต่อ", "threat_to_wisamin": "กลาง"}, {"brand": "MOVE Protein / Benefit (โปรตีนพร้อมดื่ม)", "category": "โปรตีนพืช/เวย์", "channel": "TikTok", "creator": "รีวิวเวอร์สายสุขภาพ + เซเว่น", "title": "โปรตีนหาซื้อง่ายใน 7-11 ไทย (MOVE/Benefit)", "url": "https://www.tiktok.com/discover/thailand-7-eleven-protein", "engagement_tier": "high", "format": "Convenience angle — ‘หาซื้อง่ายในเซเว่น’", "why_it_works": "ชูความสะดวก (7-11) ทำให้โปรตีนเป็นของกินประจำวัน ไม่ใช่ของนักกล้าม — ขยายตลาดคนทั่วไป", "threat_to_wisamin": "สูง — ชนโปรตีนพืชของ WISAMIN และชนะเรื่อง ‘หาซื้อง่าย’"}, {"brand": "BioActive+ (นิวซีแลนด์)", "category": "คอลลาเจน", "channel": "X", "creator": "@BioActiveTH", "title": "BioActive+ วางขายใน 7-Eleven อย่างเป็นทางการ (Juvecol Liquid Collagen)", "url": "https://x.com/BioActiveTH/status/2034227966704484443", "engagement_tier": "high", "format": "Brand launch + วางจำหน่ายในเซเว่น + มีพรีเซนเตอร์", "why_it_works": "แบรนด์พรีเมียมนำเข้า ตอกย้ำ ‘หาซื้อง่ายในเซเว่น’ + นวัตกรรม Juvecol สร้างภาพไฮเทค เจาะคนยอมจ่ายแพงเพื่อของ ‘พรีเมียม+สะดวก’", "threat_to_wisamin": "สูง — คู่แข่งใหม่ที่ได้ทั้ง distribution (7-11) และภาพพรีเมียม ชนคอลลาเจน WISAMIN โดยตรง"}, {"brand": "Gluta All in one", "category": "คอลลาเจน/กลูต้า", "channel": "X", "creator": "@iamreviews (ไอแอมรีวิว)", "title": "รีวิว Gluta All in one — ‘นอนน้อยแต่สิวไม่ขึ้น ผิวใสขึ้น’", "url": "https://x.com/iamreviews/status/1336635240433864704", "engagement_tier": "high", "format": "Real-life review เล่าประสบการณ์จริง (relatable pain: นอนดึก/สิว)", "why_it_works": "ผูกสินค้ากับ pain ที่คนวัยทำงานอินมาก (นอนน้อย ผิวโทรม) เล่าแบบเพื่อนเล่าให้ฟัง ไม่เหมือนโฆษณา", "threat_to_wisamin": "กลาง"}, {"brand": "ZEAVITA (ผ่าน Watsons)", "category": "คอลลาเจน/ลำไส้", "channel": "X", "creator": "@WatsonsThailand", "title": "ZEAVITA กล่องแดง — คอลลาเจนที่ ‘ปรับสมดุลลำไส้ + ลดริ้วรอย’ ซื้อ 1 แถม 1", "url": "https://x.com/WatsonsThailand/status/1711954779247919545", "engagement_tier": "medium", "format": "Retail promo โดยช่องทางค้าปลีกใหญ่ (Watsons)", "why_it_works": "รวม 2 จุดขายที่คนอยากได้ในตัวเดียว (ผิว+ลำไส้) + โปรซื้อ1แถม1 + พลังชั้นวางวัตสัน", "threat_to_wisamin": "สูง — วางจุดยืน ‘ผิว+ลำไส้ในเม็ดเดียว’ ซึ่งครอบทั้ง Wemin Bio และคอลลาเจนของ WISAMIN"}, {"brand": "ดราม่า ‘คอลลาเจนไม่จริงใจ’ (ผู้บริโภคถกกันเอง)", "category": "คอลลาเจน (Sentiment)", "channel": "X", "creator": "@_khunbenJA_ และผู้ใช้ทั่วไป", "title": "ถกกัน ‘เลิกเถอะคอลลาเจนที่ไม่จริงใจ’ — เทียบปริมาณสารสกัด 2 แบรนด์", "url": "https://x.com/_khunbenJA_/status/2021643281491501125", "engagement_tier": "high", "format": "Consumer debate / drama เปรียบเทียบปริมาณสาร", "why_it_works": "สะท้อนว่าผู้บริโภคเริ่ม ‘อ่านฉลากเป็น’ และไม่เชื่อโฆษณา — คนแชร์/เถียงกันเยอะ", "threat_to_wisamin": "โอกาส — WISAMIN ชูความโปร่งใส ‘บอกปริมาณสารจริงทุกตัว’ ได้เปรียบทันที"}, {"brand": "เภสัชโดนัท (donutbeautybrains)", "category": "รีวิว/ให้ความรู้ (หลายหมวด)", "channel": "TikTok", "creator": "@donutbeautybrains", "title": "รวมอาหารเสริมที่ ‘เภสัชจะไม่ซื้อกิน’", "url": "https://www.tiktok.com/@donutbeautybrains/video/7352172050116578567", "engagement_tier": "viral", "format": "เภสัชกร myth-busting / สายความรู้", "why_it_works": "หัวข้อ ‘ของที่ผู้เชี่ยวชาญไม่กิน’ กระตุ้นความอยากรู้สูงมาก (curiosity gap) + สร้าง trust", "threat_to_wisamin": "กลาง — เป็นแม่แบบคอนเทนต์ที่ WISAMIN ควรทำเวอร์ชันของตัวเอง"}, {"brand": "รีวิวสายวิจัย (YouTube ไม่รับสปอนเซอร์)", "category": "รีวิว/ให้ความรู้ (หลายหมวด)", "channel": "YouTube", "creator": "ครีเอเตอร์สายสุขภาพ", "title": "เปิดกรุอาหารเสริมที่กินอยู่ (และไม่มีวันกิน) ตามวิจัย ไม่อิงการตลาด", "url": "https://www.youtube.com/watch?v=-31E3za3Yhk", "engagement_tier": "high", "format": "Long-form รีวิวอ้างงานวิจัย ซื้อเอง ไม่รับสปอนเซอร์", "why_it_works": "ความยาว + อ้างวิจัย + ‘ไม่รับเงินใคร’ = น่าเชื่อถือสูงสุด คนดูจบและเชื่อคำแนะนำ", "threat_to_wisamin": "กลาง — คนกลุ่มนี้ตัดสินใจซื้อจากหลักฐาน WISAMIN ควรมีข้อมูลวิจาย/ส่วนผสมให้ชัด"}], "insights": [{"insight": "คนไทยเชื่อ ‘หมอ/เภสัช’ มากกว่าดารา ในหมวดสุขภาพภายใน (ลำไส้/ขับถ่าย)", "evidence": "คอนเทนต์ของ @drjade_health และ @doctoram.gastro ได้ engagement สูงและถูกเซฟ ทั้งที่ไม่ได้ขายตรง", "opportunity": "WISAMIN ควรมี ‘หมอ/เภสัชประจำแบรนด์’ หรือจ้าง KOL สายหมอทำซีรีส์ให้ความรู้ Wemin Bio"}, {"insight": "จุดขายที่ชนะตอนนี้ไม่ใช่ ‘สรรพคุณ’ แต่เป็น ‘รสชาติ + ความสะดวก + จำแบรนด์ได้’", "evidence": "FRESH DOZE ชนะด้วยสีม่วง+รสอร่อย, MOVE/Benefit ชนะด้วย ‘หาซื้อในเซเว่น’", "opportunity": "ดันโปรตีนพืช WISAMIN ด้วยมุม ‘อร่อยจนดื่มได้ทุกวัน’ + สูตรชงง่าย และเน้น branding สี/แพ็กเกจให้จำง่าย"}, {"insight": "Affiliate seeding (รีวิวเวอร์หลายร้อยคนพร้อมกัน) คือเครื่องเร่งของแบรนด์เล็กบน TikTok Shop", "evidence": "FRESH DOZE/AKANE โตจากรีวิวเวอร์จำนวนมาก ไม่ใช่โฆษณาชิ้นเดียว", "opportunity": "WISAMIN ควรตั้งโปรแกรม affiliate/commission ให้ nano-micro creator รีวิวพร้อมกันเป็น ‘คลื่น’ ทุกเดือน"}, {"insight": "หมวดคุมน้ำหนัก/ลำไส้เสี่ยงโดน อย. จับเรื่องคำโฆษณาเกินจริงสูงที่สุด", "evidence": "มีกรณีศึกษาแบรนด์ดังโดนปรับโฆษณาเกินจริง และ TikTok Shop มีกฎเข้มขายอาหารเสริม", "opportunity": "ใช้จุดนี้เป็นข้อได้เปรียบ: ทำคอนเทนต์ ‘พูดถูกกฎ อย. แต่ยังขายได้’ (ดู Skill fda-thai) ให้ WISAMIN ดูน่าเชื่อถือกว่าคู่แข่งที่พูดโอเวอร์"}, {"insight": "‘หาซื้อง่ายในเซเว่น’ กลายเป็นสนามรบใหม่ — คู่แข่งพรีเมียม (BioActive+) และแมส (MOVE/Benefit) ยึดชั้นวางเซเว่นเพื่อสร้าง trust", "evidence": "BioActive+ ประกาศวางขายใน 7-Eleven อย่างเป็นทางการบน X และชูเป็น ‘คำสัญญา’ ไม่ใช่แค่ช่องขาย", "opportunity": "ถ้า WISAMIN ยังเข้าเซเว่นไม่ได้ ให้ชู ‘ส่งถึงบ้าน/สั่งง่ายกว่าเดินเซเว่น’ + สร้าง trust ด้วยรีวิวจริงแทนชั้นวาง"}, {"insight": "ผู้บริโภคไทยเริ่ม ‘อ่านฉลาก-เทียบปริมาณสารเป็น’ และไม่เชื่อโฆษณาสวยหรู", "evidence": "ดราม่า ‘คอลลาเจนไม่จริงใจ’ บน X คนเถียงกันเรื่องปริมาณสารสกัด + คอนเทนต์เภสัช ‘ของที่ไม่ยอมกิน’ ไวรัล", "opportunity": "WISAMIN ชิงจุดยืน ‘โปร่งใส 100%’ — โชว์ปริมาณสารทุกตัวบนแพ็ก/คอนเทนต์ เทียบให้ดูว่าคุ้มกว่า ใช้ความจริงเป็นอาวุธการตลาด"}], "content_ideas": [{"idea": "ซีรีส์ ‘เภสัชขอเล่า’ — Wemin Bio ทำงานกับลำไส้ยังไงใน 45 วิ", "hook": "‘ถ่ายไม่ออกทุกเช้า? ปัญหาไม่ใช่ที่ท้อง แต่ที่จุลินทรีย์’", "format": "หมอ/เภสัช พูดตรงกล้อง + กราฟิกลำไส้ง่ายๆ", "cta": "คอมเมนต์ ‘ลำไส้’ รับตารางกินพรีไบโอติก 7 วัน", "fda_safe": true, "counters_competitor": "หมอเจด / Woma Balance"}, {"idea": "‘โปรตีนพืชอร่อยจนลืมว่าลดน้ำหนัก’ — ชง 3 สูตรใน 15 วิ", "hook": "‘โปรตีนพืชที่ไม่เหม็นเขียว มีจริงไหม?’", "format": "ASMR ชง + จิบ + สีหน้าอร่อย 4 สูตร WISAMIN", "cta": "สูตรไหนน่าลอง คอมเมนต์เลข 1-4", "fda_safe": true, "counters_competitor": "MOVE/Benefit, FRESH DOZE (เกมรสชาติ)"}, {"idea": "‘รีวิวเวอร์ 30 คนใน 30 วัน’ — WISAMIN Affiliate Wave", "hook": "แคมเปญ seeding พร้อมกันหมวดคอลลาเจน/โปรตีน", "format": "แจกโค้ด + ชุดแคปชันปลอดคำต้องห้าม อย. ให้ครีเอเตอร์", "cta": "สมัครเป็นตัวแทน/affiliate", "fda_safe": true, "counters_competitor": "FRESH DOZE, AKANE (เกม affiliate)"}, {"idea": "‘MINTEA ชาเขียว vs ยาลดน้ำหนัก’ — เล่าแบบตรงไปตรงมา", "hook": "‘ทำไมคุมหิวด้วยชาเขียวถึงปลอดภัยกว่าใจสั่น’", "format": "เปรียบเทียบ + เตือนภัยโยโย่ (ให้ความรู้ ไม่โอเวอร์เคลม)", "cta": "เซฟไว้ก่อนซื้ออาหารเสริมลดน้ำหนักตัวถัดไป", "fda_safe": true, "counters_competitor": "ชาเม่ Sye S"}, {"idea": "‘พลิกฉลากให้ดู’ — WISAMIN โปร่งใส 100% เทียบปริมาณสารจริง", "hook": "‘ก่อนกินคอลลาเจนตัวต่อไป พลิกดูหลังกล่องก่อน’", "format": "โคลสอัพฉลาก + ชี้ปริมาณสารสำคัญของ WISAMIN แบบไม่เบลอ (ไม่ดิสเครดิตคู่แข่งตรงๆ)", "cta": "คอมเมนต์ ‘ฉลาก’ ขอตารางเทียบส่วนผสม", "fda_safe": true, "counters_competitor": "กระแส ‘คอลลาเจนไม่จริงใจ’ + เภสัชสายรีวิว"}, {"idea": "‘ของที่เภสัช/เจ้าของแบรนด์ยอมกินเอง’ — behind the brand", "hook": "‘เจ้าของแบรนด์กินตัวไหนของตัวเองทุกวัน?’", "format": "เจ้าของ/เภสัชเล่าเหตุผลเลือกส่วนผสม สร้างความจริงใจ (counter สาย myth-busting)", "cta": "ถามอะไรก็ได้เรื่องส่วนผสม เดี๋ยวตอบให้", "fda_safe": true, "counters_competitor": "donutbeautybrains, รีวิวสายวิจัย YouTube"}], "trends": ["Doctor-led / เภสัช-led content โตต่อเนื่อง (trust > hype)", "‘วิตามินดริปผิว’ แปลงเป็นเวอร์ชันกินได้กำลังมา", "ความสะดวก ‘หาซื้อในเซเว่น’ เป็นจุดขายใหม่ของโปรตีน", "อย./TikTok Shop คุมคำโฆษณาเข้มขึ้น → คอนเทนต์สายความรู้ได้เปรียบ"]}];
+let current = DATA[0];
+let chFilter = 'all';
+let catFilter = 'all';
+
+function chBadgeClass(c){c=(c||'').toLowerCase();if(c.includes('tiktok'))return'b-tiktok';if(c.includes('face'))return'b-facebook';if(c.includes('you'))return'b-yt';if(c.includes('x'))return'b-x';return'b-tiktok';}
+function tierClass(t){t=(t||'').toLowerCase();if(t.includes('viral'))return't-viral';if(t.includes('high'))return't-high';return't-medium';}
+function tierLabel(t){t=(t||'').toLowerCase();if(t.includes('viral'))return'🔥 ไวรัล';if(t.includes('high'))return'⬆ engagement สูง';return'engagement กลาง';}
+function threatColor(t){t=(t||'').toLowerCase();if(t.includes('สูง'))return'var(--hot)';if(t.includes('กลาง'))return'var(--warn)';return'var(--muted)';}
+
+function initDates(){
+  const sel=document.getElementById('dateSel');
+  sel.innerHTML=DATA.map((r,i)=>`<option value="${i}">${r.date}${i===0?' (ล่าสุด)':''}</option>`).join('');
+}
+function selectDate(i){current=DATA[i];render();}
+
+function render(){
+  // headline
+  const s=current.summary||{};
+  document.getElementById('headline').innerHTML=`<b>สรุปวันที่ ${current.date}:</b> ${s.headline||''}`;
+  // kpis
+  const cc=s.channel_counts||{};
+  const total=(current.competitors||[]).length;
+  document.getElementById('kpis').innerHTML=`
+    <div class="kpi"><div class="n">${total}</div><div class="l">คอนเทนต์คู่แข่งวันนี้</div></div>
+    <div class="kpi tiktok"><div class="n">${cc.TikTok||0}</div><div class="l">TikTok</div></div>
+    <div class="kpi facebook"><div class="n">${cc.Facebook||0}</div><div class="l">Facebook</div></div>
+    <div class="kpi youtube"><div class="n">${cc.YouTube||0}</div><div class="l">YouTube</div></div>
+    <div class="kpi x"><div class="n">${cc.X||0}</div><div class="l">X (Twitter)</div></div>
+    <div class="kpi"><div class="n" style="color:var(--accent2)">${(current.content_ideas||[]).length}</div><div class="l">ไอเดียต่อยอด</div></div>`;
+  renderFilters();
+  renderFeed();
+  renderInsights();
+  renderIdeas();
+  renderTrends();
+}
+
+function renderFilters(){
+  const chans=['all',...new Set((current.competitors||[]).map(c=>c.channel))];
+  document.getElementById('chFilters').innerHTML='<span class="lbl">ช่องทาง:</span>'+chans.map(c=>
+    `<div class="chip ${chFilter===c?'active':''}" onclick="setFilter('${c}')">${c==='all'?'ทั้งหมด':c}</div>`).join('');
+  const cats=['all',...new Set((current.competitors||[]).map(c=>c.category))];
+  document.getElementById('catFilters').innerHTML='<span class="lbl">หมวด:</span>'+cats.map(c=>
+    `<div class="chip ${catFilter===c?'active':''}" onclick="setCat('${c.replace(/'/g,"\\'")}')">${c==='all'?'ทั้งหมด':c}</div>`).join('');
+}
+function setFilter(c){chFilter=c;renderFilters();renderFeed();}
+function setCat(c){catFilter=c;renderFilters();renderFeed();}
+
+function renderFeed(){
+  let items=current.competitors||[];
+  if(chFilter!=='all')items=items.filter(c=>c.channel===chFilter);
+  if(catFilter!=='all')items=items.filter(c=>c.category===catFilter);
+  const q=(document.getElementById('search')?.value||'').trim().toLowerCase();
+  if(q)items=items.filter(c=>JSON.stringify(c).toLowerCase().includes(q));
+  // เรียงตาม tier: viral > high > medium
+  const order={viral:0,high:1,medium:2};
+  items=[...items].sort((a,b)=>(order[(a.engagement_tier||'').toLowerCase()]??3)-(order[(b.engagement_tier||'').toLowerCase()]??3));
+  document.getElementById('feed').innerHTML=items.map(c=>`
+    <div class="card">
+      <div class="top">
+        <span class="badge ${chBadgeClass(c.channel)}">${c.channel}</span>
+        <span class="tier ${tierClass(c.engagement_tier)}">${tierLabel(c.engagement_tier)}</span>
+      </div>
+      <div class="brand">${c.brand}</div>
+      <h3>${c.title}</h3>
+      <div class="cat">หมวด: ${c.category} · รูปแบบ: ${c.format||'-'}</div>
+      <div class="why"><b>ทำไมปัง:</b> ${c.why_it_works||'-'}</div>
+      ${c.threat_to_wisamin?`<div class="threat">⚠️ ภัยต่อ WISAMIN: <span class="lv" style="color:${threatColor(c.threat_to_wisamin)}">${c.threat_to_wisamin}</span></div>`:''}
+      <div class="meta">
+        <span class="creator">👤 ${c.creator||'-'}</span>
+        <a class="link" href="${c.url}" target="_blank" rel="noopener">ดูคอนเทนต์ ↗</a>
+      </div>
+    </div>`).join('') || '<p style="color:var(--muted)">ไม่มีคอนเทนต์ในช่องนี้</p>';
+}
+
+function renderInsights(){
+  document.getElementById('insights').innerHTML=(current.insights||[]).map(i=>`
+    <div class="inscard">
+      <h3>🧠 ${i.insight}</h3>
+      <div class="row"><b>หลักฐาน:</b> ${i.evidence}</div>
+      <div class="row"><b>โอกาสของ WISAMIN:</b> ${i.opportunity}</div>
+    </div>`).join('');
+}
+function renderIdeas(){
+  document.getElementById('ideas').innerHTML=(current.content_ideas||[]).map(i=>`
+    <div class="idea">
+      <h3>💡 ${i.idea}</h3>
+      <div class="hook">"${i.hook}"</div>
+      <div class="k"><b>รูปแบบ:</b> ${i.format}</div>
+      <div class="k"><b>CTA:</b> ${i.cta}</div>
+      ${i.counters_competitor?`<div class="k"><b>ชนคู่แข่ง:</b> ${i.counters_competitor}</div>`:''}
+      ${i.fda_safe?'<span class="fda">✓ ปลอดคำต้องห้าม อย.</span>':''}
+    </div>`).join('');
+}
+function renderTrends(){
+  document.getElementById('trends').innerHTML=(current.trends||[]).map((t,i)=>`
+    <div class="trend"><div class="num">${i+1}</div><div>${t}</div></div>`).join('');
+}
+
+function switchTab(t){
+  document.querySelectorAll('.tab').forEach(el=>el.classList.toggle('active',el.dataset.tab===t));
+  ['feed','insight','idea','trend'].forEach(x=>document.getElementById('tab-'+x).classList.toggle('hide',x!==t));
+}
+
+initDates();render();
+</script>
+</body>
+</html>

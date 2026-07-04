@@ -1,0 +1,294 @@
+{
+  "date": "2026-07-04",
+  "generated_at": "2026-07-04",
+  "brand": "WISAMIN",
+  "brand_categories": ["โปรตีนพืช", "คอลลาเจน", "พรีไบโอติก/ลำไส้", "คุมน้ำหนัก/ชาเขียว", "วิตามิน"],
+  "summary": {
+    "headline": "คู่แข่งเร่งเครื่องคอนเทนต์สาย ‘คอลลาเจนผิวใส’ + ‘ลำไส้/ขับถ่าย’ โดยใช้หมอ/เภสัชเป็นผู้เล่าเพื่อเลี่ยงคำต้องห้าม อย.",
+    "top_theme": "Doctor-led credibility content (หมอ/เภสัชอธิบายกลไก) กำลังกินยอด engagement มากกว่าโฆษณาขายตรง",
+    "channel_counts": { "TikTok": 6, "Facebook": 3, "YouTube": 1, "X": 0 },
+    "note_on_metrics": "ยอดวิว/ไลก์ที่แม่นยำต้องดึงผ่าน API ของแต่ละแพลตฟอร์ม (ดู PLAYBOOK.md). รอบนี้จัดระดับ engagement เชิงคุณภาพ (viral/high/medium) จากสัญญาณ: ตัวเลขที่แพลตฟอร์มโชว์, การถูกอ้างถึงซ้ำ, และการติดหน้า discover/แท็ก"
+  },
+  "competitors": [
+    {
+      "brand": "Woma Balance (ผ่าน พิมรี่พาย)",
+      "category": "พรีไบโอติก/ลำไส้",
+      "channel": "TikTok",
+      "creator": "@pimrypie__tiktok",
+      "title": "Woma Balance โพรไบโอติก — พิมรี่พายขายทุกอย่าง",
+      "url": "https://www.tiktok.com/@pimrypie__tiktok/video/7537186173266005266",
+      "engagement_tier": "viral",
+      "format": "Live/Hard-sell โดย KOL ระดับท็อป",
+      "why_it_works": "ใช้พลัง KOL แมสที่มีฐานคนดูหลักล้าน ดันสินค้าลำไส้/ขับถ่ายให้กลายเป็นของ ‘ต้องมี’ ในไลฟ์ ปิดการขายด้วยความเชื่อในตัวบุคคล",
+      "threat_to_wisamin": "สูง — ชนหมวดพรีไบโอติกตรงกับ Wemin Bio ของ WISAMIN โดยตรง และใช้ KOL ที่ WISAMIN ยังไม่มี"
+    },
+    {
+      "brand": "หมอเจด (KOL สายให้ความรู้ – ดันหลายแบรนด์)",
+      "category": "พรีไบโอติก/ลำไส้",
+      "channel": "TikTok",
+      "creator": "@drjade_health",
+      "title": "โพรไบโอติกส์ กินเวลาไหนดีสุด?",
+      "url": "https://www.tiktok.com/@drjade_health/video/7424003118532283655",
+      "engagement_tier": "high",
+      "format": "Educational / หมออธิบายสั้น 30-60 วิ",
+      "why_it_works": "ตอบคำถามที่คนค้นหาจริง (‘กินตอนไหน’) สร้าง trust ด้วยตำแหน่งหมอ — คอนเทนต์ความรู้แบบนี้ถูกเซฟ/แชร์สูงและปลอดภัยเรื่อง อย.",
+      "threat_to_wisamin": "กลาง — เป็นแม่แบบคอนเทนต์ที่ WISAMIN ควรก็อปโครงสร้าง (how-to กินให้ได้ผล)"
+    },
+    {
+      "brand": "รีวิวโพรไบโอติก 7-11 (หมอแอม Gastro)",
+      "category": "พรีไบโอติก/ลำไส้",
+      "channel": "TikTok",
+      "creator": "@doctoram.gastro",
+      "title": "รีวิวโยเกิร์ต/โพรไบโอติกในเซเว่น โดยหมอทางเดินอาหาร",
+      "url": "https://www.tiktok.com/@doctoram.gastro/video/7346912529928441096",
+      "engagement_tier": "high",
+      "format": "Review + Myth-busting โดยแพทย์เฉพาะทาง",
+      "why_it_works": "เอาของใกล้ตัว (เซเว่น) มาเล่าโดยผู้เชี่ยวชาญ = เข้าถึงง่าย + น่าเชื่อถือ คนคอมเมนต์ถามต่อเยอะ",
+      "threat_to_wisamin": "กลาง"
+    },
+    {
+      "brand": "FRESH DOZE",
+      "category": "คอลลาเจน",
+      "channel": "TikTok",
+      "creator": "หลาย affiliate/รีวิวเวอร์",
+      "title": "คอลลาเจน กลูต้า + วิตามินซี รสเคียวโฮ (สีม่วง)",
+      "url": "https://www.tiktok.com/tag/freshdoze",
+      "engagement_tier": "viral",
+      "format": "UGC/Affiliate รีวิวจำนวนมาก (seeding กว้าง)",
+      "why_it_works": "แพ็กเกจสีม่วงจำง่าย + รสชาติอร่อยเป็นจุดขาย (ดื่มเพลิน) ปูพรมด้วยรีวิวเวอร์หลายร้อยคน สร้างภาพ ‘ใครๆก็กิน’",
+      "threat_to_wisamin": "สูง — โมเดล affiliate seeding แบบนี้คือสิ่งที่ทำให้แบรนด์เล็กโตเร็วบน TikTok Shop"
+    },
+    {
+      "brand": "AKANE",
+      "category": "คอลลาเจน",
+      "channel": "TikTok",
+      "creator": "หลาย affiliate",
+      "title": "คอลลาเจน + ไลโคปีน ดูแลผิว",
+      "url": "https://www.tiktok.com/tag/akane",
+      "engagement_tier": "high",
+      "format": "รีวิวก่อน/หลัง + ชูส่วนผสม (ไลโคปีน)",
+      "why_it_works": "ชูสารสกัดที่ฟังดูพรีเมียม (ไลโคปีน) แยกตัวจากคอลลาเจนทั่วไป จับกลุ่มคนอยากผิวออร่า",
+      "threat_to_wisamin": "กลาง-สูง"
+    },
+    {
+      "brand": "Glory Collagen",
+      "category": "คอลลาเจน",
+      "channel": "TikTok",
+      "creator": "@pantipa.a และรีวิวเวอร์",
+      "title": "กลอรี่ คอลลาเจน + วิตามินดริปผิว (สินค้าขายดีใน TikTok)",
+      "url": "https://www.tiktok.com/@pantipa.a/video/7434510513268215048",
+      "engagement_tier": "high",
+      "format": "Q&A ตอบคอมเมนต์ + ผูกกับเทรนด์ ‘วิตามินดริปผิว’",
+      "why_it_works": "เกาะเทรนด์ ‘ดริปผิว’ ที่กำลังฮิต แปลงเป็นเวอร์ชันกินได้ในราคาเข้าถึงง่าย",
+      "threat_to_wisamin": "กลาง"
+    },
+    {
+      "brand": "ชาเม่ (Chame) Sye S Cap",
+      "category": "คุมน้ำหนัก/คุมหิว",
+      "channel": "Facebook",
+      "creator": "เพจตัวแทน (เช่น cheepaoseven)",
+      "title": "Sye S Cap สูตรใหม่ — คุมหิว หุ่นสับ (เป็นสูตร Vegan)",
+      "url": "https://www.facebook.com/cheepaoseven/posts/736014621906179",
+      "engagement_tier": "high",
+      "format": "Hard-sell + ชูจุดขาย vegan/คุมหิว",
+      "why_it_works": "แบรนด์เก่าแก่ที่ยังแข็งบน Facebook เครือข่ายตัวแทนช่วยกันดัน + จับ pain ‘หิวจุกจิก’",
+      "threat_to_wisamin": "สูง — ชนหมวดคุมน้ำหนักที่ตรงกับ MINTEA (ชาเขียว) ของ WISAMIN"
+    },
+    {
+      "brand": "Nutrilite (Amway)",
+      "category": "พรีไบโอติก/ลำไส้",
+      "channel": "YouTube/Web",
+      "creator": "Nutrilite Thailand (แบรนด์)",
+      "title": "พรีไบโอติก อาหารของจุลินทรีย์ในลำไส้ — คอนเทนต์ให้ความรู้",
+      "url": "https://nutrilite.co.th/th/article/what-is-prebiotic",
+      "engagement_tier": "medium",
+      "format": "Educational content marketing (SEO + วิดีโอ)",
+      "why_it_works": "เล่นเกม authority/ความรู้ระยะยาว ปั้นแบรนด์เป็น ‘ผู้เชี่ยวชาญลำไส้’ ไม่ใช่แค่คนขาย",
+      "threat_to_wisamin": "กลาง (คนละกลุ่มราคา แต่แย่ง search intent เรื่องลำไส้)"
+    },
+    {
+      "brand": "Colon Man",
+      "category": "พรีไบโอติก/ดีท็อกซ์ลำไส้",
+      "channel": "Facebook",
+      "creator": "@colonmanthailand",
+      "title": "โพรไบโอติก vs พรีไบโอติก — คู่หูดูแลลำไส้",
+      "url": "https://www.facebook.com/colonmanthailand",
+      "engagement_tier": "medium",
+      "format": "Infographic ให้ความรู้ + brand education",
+      "why_it_works": "ชื่อแบรนด์จำง่าย (Colon = ลำไส้) + คอนเทนต์เปรียบเทียบที่คนแชร์ต่อ",
+      "threat_to_wisamin": "กลาง"
+    },
+    {
+      "brand": "MOVE Protein / Benefit (โปรตีนพร้อมดื่ม)",
+      "category": "โปรตีนพืช/เวย์",
+      "channel": "TikTok",
+      "creator": "รีวิวเวอร์สายสุขภาพ + เซเว่น",
+      "title": "โปรตีนหาซื้อง่ายใน 7-11 ไทย (MOVE/Benefit)",
+      "url": "https://www.tiktok.com/discover/thailand-7-eleven-protein",
+      "engagement_tier": "high",
+      "format": "Convenience angle — ‘หาซื้อง่ายในเซเว่น’",
+      "why_it_works": "ชูความสะดวก (7-11) ทำให้โปรตีนเป็นของกินประจำวัน ไม่ใช่ของนักกล้าม — ขยายตลาดคนทั่วไป",
+      "threat_to_wisamin": "สูง — ชนโปรตีนพืชของ WISAMIN และชนะเรื่อง ‘หาซื้อง่าย’"
+    },
+    {
+      "brand": "BioActive+ (นิวซีแลนด์)",
+      "category": "คอลลาเจน",
+      "channel": "X",
+      "creator": "@BioActiveTH",
+      "title": "BioActive+ วางขายใน 7-Eleven อย่างเป็นทางการ (Juvecol Liquid Collagen)",
+      "url": "https://x.com/BioActiveTH/status/2034227966704484443",
+      "engagement_tier": "high",
+      "format": "Brand launch + วางจำหน่ายในเซเว่น + มีพรีเซนเตอร์",
+      "why_it_works": "แบรนด์พรีเมียมนำเข้า ตอกย้ำ ‘หาซื้อง่ายในเซเว่น’ + นวัตกรรม Juvecol สร้างภาพไฮเทค เจาะคนยอมจ่ายแพงเพื่อของ ‘พรีเมียม+สะดวก’",
+      "threat_to_wisamin": "สูง — คู่แข่งใหม่ที่ได้ทั้ง distribution (7-11) และภาพพรีเมียม ชนคอลลาเจน WISAMIN โดยตรง"
+    },
+    {
+      "brand": "Gluta All in one",
+      "category": "คอลลาเจน/กลูต้า",
+      "channel": "X",
+      "creator": "@iamreviews (ไอแอมรีวิว)",
+      "title": "รีวิว Gluta All in one — ‘นอนน้อยแต่สิวไม่ขึ้น ผิวใสขึ้น’",
+      "url": "https://x.com/iamreviews/status/1336635240433864704",
+      "engagement_tier": "high",
+      "format": "Real-life review เล่าประสบการณ์จริง (relatable pain: นอนดึก/สิว)",
+      "why_it_works": "ผูกสินค้ากับ pain ที่คนวัยทำงานอินมาก (นอนน้อย ผิวโทรม) เล่าแบบเพื่อนเล่าให้ฟัง ไม่เหมือนโฆษณา",
+      "threat_to_wisamin": "กลาง"
+    },
+    {
+      "brand": "ZEAVITA (ผ่าน Watsons)",
+      "category": "คอลลาเจน/ลำไส้",
+      "channel": "X",
+      "creator": "@WatsonsThailand",
+      "title": "ZEAVITA กล่องแดง — คอลลาเจนที่ ‘ปรับสมดุลลำไส้ + ลดริ้วรอย’ ซื้อ 1 แถม 1",
+      "url": "https://x.com/WatsonsThailand/status/1711954779247919545",
+      "engagement_tier": "medium",
+      "format": "Retail promo โดยช่องทางค้าปลีกใหญ่ (Watsons)",
+      "why_it_works": "รวม 2 จุดขายที่คนอยากได้ในตัวเดียว (ผิว+ลำไส้) + โปรซื้อ1แถม1 + พลังชั้นวางวัตสัน",
+      "threat_to_wisamin": "สูง — วางจุดยืน ‘ผิว+ลำไส้ในเม็ดเดียว’ ซึ่งครอบทั้ง Wemin Bio และคอลลาเจนของ WISAMIN"
+    },
+    {
+      "brand": "ดราม่า ‘คอลลาเจนไม่จริงใจ’ (ผู้บริโภคถกกันเอง)",
+      "category": "คอลลาเจน (Sentiment)",
+      "channel": "X",
+      "creator": "@_khunbenJA_ และผู้ใช้ทั่วไป",
+      "title": "ถกกัน ‘เลิกเถอะคอลลาเจนที่ไม่จริงใจ’ — เทียบปริมาณสารสกัด 2 แบรนด์",
+      "url": "https://x.com/_khunbenJA_/status/2021643281491501125",
+      "engagement_tier": "high",
+      "format": "Consumer debate / drama เปรียบเทียบปริมาณสาร",
+      "why_it_works": "สะท้อนว่าผู้บริโภคเริ่ม ‘อ่านฉลากเป็น’ และไม่เชื่อโฆษณา — คนแชร์/เถียงกันเยอะ",
+      "threat_to_wisamin": "โอกาส — WISAMIN ชูความโปร่งใส ‘บอกปริมาณสารจริงทุกตัว’ ได้เปรียบทันที"
+    },
+    {
+      "brand": "เภสัชโดนัท (donutbeautybrains)",
+      "category": "รีวิว/ให้ความรู้ (หลายหมวด)",
+      "channel": "TikTok",
+      "creator": "@donutbeautybrains",
+      "title": "รวมอาหารเสริมที่ ‘เภสัชจะไม่ซื้อกิน’",
+      "url": "https://www.tiktok.com/@donutbeautybrains/video/7352172050116578567",
+      "engagement_tier": "viral",
+      "format": "เภสัชกร myth-busting / สายความรู้",
+      "why_it_works": "หัวข้อ ‘ของที่ผู้เชี่ยวชาญไม่กิน’ กระตุ้นความอยากรู้สูงมาก (curiosity gap) + สร้าง trust",
+      "threat_to_wisamin": "กลาง — เป็นแม่แบบคอนเทนต์ที่ WISAMIN ควรทำเวอร์ชันของตัวเอง"
+    },
+    {
+      "brand": "รีวิวสายวิจัย (YouTube ไม่รับสปอนเซอร์)",
+      "category": "รีวิว/ให้ความรู้ (หลายหมวด)",
+      "channel": "YouTube",
+      "creator": "ครีเอเตอร์สายสุขภาพ",
+      "title": "เปิดกรุอาหารเสริมที่กินอยู่ (และไม่มีวันกิน) ตามวิจัย ไม่อิงการตลาด",
+      "url": "https://www.youtube.com/watch?v=-31E3za3Yhk",
+      "engagement_tier": "high",
+      "format": "Long-form รีวิวอ้างงานวิจัย ซื้อเอง ไม่รับสปอนเซอร์",
+      "why_it_works": "ความยาว + อ้างวิจัย + ‘ไม่รับเงินใคร’ = น่าเชื่อถือสูงสุด คนดูจบและเชื่อคำแนะนำ",
+      "threat_to_wisamin": "กลาง — คนกลุ่มนี้ตัดสินใจซื้อจากหลักฐาน WISAMIN ควรมีข้อมูลวิจาย/ส่วนผสมให้ชัด"
+    }
+  ],
+  "insights": [
+    {
+      "insight": "คนไทยเชื่อ ‘หมอ/เภสัช’ มากกว่าดารา ในหมวดสุขภาพภายใน (ลำไส้/ขับถ่าย)",
+      "evidence": "คอนเทนต์ของ @drjade_health และ @doctoram.gastro ได้ engagement สูงและถูกเซฟ ทั้งที่ไม่ได้ขายตรง",
+      "opportunity": "WISAMIN ควรมี ‘หมอ/เภสัชประจำแบรนด์’ หรือจ้าง KOL สายหมอทำซีรีส์ให้ความรู้ Wemin Bio"
+    },
+    {
+      "insight": "จุดขายที่ชนะตอนนี้ไม่ใช่ ‘สรรพคุณ’ แต่เป็น ‘รสชาติ + ความสะดวก + จำแบรนด์ได้’",
+      "evidence": "FRESH DOZE ชนะด้วยสีม่วง+รสอร่อย, MOVE/Benefit ชนะด้วย ‘หาซื้อในเซเว่น’",
+      "opportunity": "ดันโปรตีนพืช WISAMIN ด้วยมุม ‘อร่อยจนดื่มได้ทุกวัน’ + สูตรชงง่าย และเน้น branding สี/แพ็กเกจให้จำง่าย"
+    },
+    {
+      "insight": "Affiliate seeding (รีวิวเวอร์หลายร้อยคนพร้อมกัน) คือเครื่องเร่งของแบรนด์เล็กบน TikTok Shop",
+      "evidence": "FRESH DOZE/AKANE โตจากรีวิวเวอร์จำนวนมาก ไม่ใช่โฆษณาชิ้นเดียว",
+      "opportunity": "WISAMIN ควรตั้งโปรแกรม affiliate/commission ให้ nano-micro creator รีวิวพร้อมกันเป็น ‘คลื่น’ ทุกเดือน"
+    },
+    {
+      "insight": "หมวดคุมน้ำหนัก/ลำไส้เสี่ยงโดน อย. จับเรื่องคำโฆษณาเกินจริงสูงที่สุด",
+      "evidence": "มีกรณีศึกษาแบรนด์ดังโดนปรับโฆษณาเกินจริง และ TikTok Shop มีกฎเข้มขายอาหารเสริม",
+      "opportunity": "ใช้จุดนี้เป็นข้อได้เปรียบ: ทำคอนเทนต์ ‘พูดถูกกฎ อย. แต่ยังขายได้’ (ดู Skill fda-thai) ให้ WISAMIN ดูน่าเชื่อถือกว่าคู่แข่งที่พูดโอเวอร์"
+    },
+    {
+      "insight": "‘หาซื้อง่ายในเซเว่น’ กลายเป็นสนามรบใหม่ — คู่แข่งพรีเมียม (BioActive+) และแมส (MOVE/Benefit) ยึดชั้นวางเซเว่นเพื่อสร้าง trust",
+      "evidence": "BioActive+ ประกาศวางขายใน 7-Eleven อย่างเป็นทางการบน X และชูเป็น ‘คำสัญญา’ ไม่ใช่แค่ช่องขาย",
+      "opportunity": "ถ้า WISAMIN ยังเข้าเซเว่นไม่ได้ ให้ชู ‘ส่งถึงบ้าน/สั่งง่ายกว่าเดินเซเว่น’ + สร้าง trust ด้วยรีวิวจริงแทนชั้นวาง"
+    },
+    {
+      "insight": "ผู้บริโภคไทยเริ่ม ‘อ่านฉลาก-เทียบปริมาณสารเป็น’ และไม่เชื่อโฆษณาสวยหรู",
+      "evidence": "ดราม่า ‘คอลลาเจนไม่จริงใจ’ บน X คนเถียงกันเรื่องปริมาณสารสกัด + คอนเทนต์เภสัช ‘ของที่ไม่ยอมกิน’ ไวรัล",
+      "opportunity": "WISAMIN ชิงจุดยืน ‘โปร่งใส 100%’ — โชว์ปริมาณสารทุกตัวบนแพ็ก/คอนเทนต์ เทียบให้ดูว่าคุ้มกว่า ใช้ความจริงเป็นอาวุธการตลาด"
+    }
+  ],
+  "content_ideas": [
+    {
+      "idea": "ซีรีส์ ‘เภสัชขอเล่า’ — Wemin Bio ทำงานกับลำไส้ยังไงใน 45 วิ",
+      "hook": "‘ถ่ายไม่ออกทุกเช้า? ปัญหาไม่ใช่ที่ท้อง แต่ที่จุลินทรีย์’",
+      "format": "หมอ/เภสัช พูดตรงกล้อง + กราฟิกลำไส้ง่ายๆ",
+      "cta": "คอมเมนต์ ‘ลำไส้’ รับตารางกินพรีไบโอติก 7 วัน",
+      "fda_safe": true,
+      "counters_competitor": "หมอเจด / Woma Balance"
+    },
+    {
+      "idea": "‘โปรตีนพืชอร่อยจนลืมว่าลดน้ำหนัก’ — ชง 3 สูตรใน 15 วิ",
+      "hook": "‘โปรตีนพืชที่ไม่เหม็นเขียว มีจริงไหม?’",
+      "format": "ASMR ชง + จิบ + สีหน้าอร่อย 4 สูตร WISAMIN",
+      "cta": "สูตรไหนน่าลอง คอมเมนต์เลข 1-4",
+      "fda_safe": true,
+      "counters_competitor": "MOVE/Benefit, FRESH DOZE (เกมรสชาติ)"
+    },
+    {
+      "idea": "‘รีวิวเวอร์ 30 คนใน 30 วัน’ — WISAMIN Affiliate Wave",
+      "hook": "แคมเปญ seeding พร้อมกันหมวดคอลลาเจน/โปรตีน",
+      "format": "แจกโค้ด + ชุดแคปชันปลอดคำต้องห้าม อย. ให้ครีเอเตอร์",
+      "cta": "สมัครเป็นตัวแทน/affiliate",
+      "fda_safe": true,
+      "counters_competitor": "FRESH DOZE, AKANE (เกม affiliate)"
+    },
+    {
+      "idea": "‘MINTEA ชาเขียว vs ยาลดน้ำหนัก’ — เล่าแบบตรงไปตรงมา",
+      "hook": "‘ทำไมคุมหิวด้วยชาเขียวถึงปลอดภัยกว่าใจสั่น’",
+      "format": "เปรียบเทียบ + เตือนภัยโยโย่ (ให้ความรู้ ไม่โอเวอร์เคลม)",
+      "cta": "เซฟไว้ก่อนซื้ออาหารเสริมลดน้ำหนักตัวถัดไป",
+      "fda_safe": true,
+      "counters_competitor": "ชาเม่ Sye S"
+    },
+    {
+      "idea": "‘พลิกฉลากให้ดู’ — WISAMIN โปร่งใส 100% เทียบปริมาณสารจริง",
+      "hook": "‘ก่อนกินคอลลาเจนตัวต่อไป พลิกดูหลังกล่องก่อน’",
+      "format": "โคลสอัพฉลาก + ชี้ปริมาณสารสำคัญของ WISAMIN แบบไม่เบลอ (ไม่ดิสเครดิตคู่แข่งตรงๆ)",
+      "cta": "คอมเมนต์ ‘ฉลาก’ ขอตารางเทียบส่วนผสม",
+      "fda_safe": true,
+      "counters_competitor": "กระแส ‘คอลลาเจนไม่จริงใจ’ + เภสัชสายรีวิว"
+    },
+    {
+      "idea": "‘ของที่เภสัช/เจ้าของแบรนด์ยอมกินเอง’ — behind the brand",
+      "hook": "‘เจ้าของแบรนด์กินตัวไหนของตัวเองทุกวัน?’",
+      "format": "เจ้าของ/เภสัชเล่าเหตุผลเลือกส่วนผสม สร้างความจริงใจ (counter สาย myth-busting)",
+      "cta": "ถามอะไรก็ได้เรื่องส่วนผสม เดี๋ยวตอบให้",
+      "fda_safe": true,
+      "counters_competitor": "donutbeautybrains, รีวิวสายวิจัย YouTube"
+    }
+  ],
+  "trends": [
+    "Doctor-led / เภสัช-led content โตต่อเนื่อง (trust > hype)",
+    "‘วิตามินดริปผิว’ แปลงเป็นเวอร์ชันกินได้กำลังมา",
+    "ความสะดวก ‘หาซื้อในเซเว่น’ เป็นจุดขายใหม่ของโปรตีน",
+    "อย./TikTok Shop คุมคำโฆษณาเข้มขึ้น → คอนเทนต์สายความรู้ได้เปรียบ"
+  ]
+}
