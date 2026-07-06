@@ -18,7 +18,7 @@ def norm_channel(c):
     if "face" in c or "fb" in c: return "Facebook"
     if "you" in c: return "YouTube"
     if c.strip() == "x" or "twitter" in c or c.startswith("x "): return "X"
-    return "X" if c.strip() == "x" else "อื่นๆ"
+    return "อื่นๆ"
 
 
 def compute_counts(report):
@@ -158,6 +158,32 @@ header{background:linear-gradient(135deg,#0e1520,#141d2b);border-bottom:1px soli
 .trend{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:14px;display:flex;gap:12px;align-items:center}
 .trend .num{width:28px;height:28px;border-radius:8px;background:var(--accent2);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0}
 
+.chanwrap{display:flex;flex-direction:column;gap:18px}
+.chanhead{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.chanhead .info h3{font-size:18px;margin-bottom:4px}
+.chanhead .info p{font-size:13px;color:var(--muted)}
+.chanhead .stats{display:flex;gap:24px}
+.chanhead .stat .n{font-size:22px;font-weight:700;color:var(--accent)}
+.chanhead .stat .l{font-size:11px;color:var(--muted)}
+.chantags{display:flex;flex-wrap:wrap;gap:8px}
+.chantag{font-size:12px;background:var(--panel2);border:1px solid var(--line);border-radius:20px;padding:6px 12px;color:#c4d0dd}
+.chansec h4{font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+.chanlist{display:flex;flex-direction:column;gap:10px}
+.gap-item{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--hot);border-radius:10px;padding:12px 14px;font-size:13px;color:#c4d0dd}
+.win-item{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:12px 14px;font-size:13px;color:#c4d0dd}
+
+.livewhy{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--tiktok);border-radius:10px;padding:14px 16px;font-size:13px;color:#c4d0dd;margin-bottom:6px}
+.compliance{background:rgba(255,176,32,.1);border:1px solid var(--warn);border-radius:10px;padding:14px 16px;font-size:13px;color:#ffca6b}
+.cadence{font-size:13px;color:#c4d0dd;background:var(--panel2);border-radius:8px;padding:10px 12px}
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-item{display:flex;gap:14px;padding:12px 0;border-left:2px solid var(--line);margin-left:8px;padding-left:18px;position:relative}
+.tl-item::before{content:'';position:absolute;left:-6px;top:16px;width:10px;height:10px;border-radius:50%;background:var(--tiktok)}
+.tl-time{font-size:12px;color:var(--tiktok);font-weight:600;min-width:76px;flex-shrink:0}
+.tl-body h4{font-size:14px;margin-bottom:3px}
+.tl-body p{font-size:13px;color:#c4d0dd}
+.kpirow{display:flex;flex-wrap:wrap;gap:8px}
+.kpichip{font-size:12px;background:var(--panel2);border:1px solid var(--accent2);color:#c9bfff;border-radius:20px;padding:6px 12px}
+
 .section-title{font-size:14px;color:var(--muted);margin:6px 0 12px;text-transform:uppercase;letter-spacing:1px}
 .hide{display:none}
 footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px;padding-top:20px;border-top:1px solid var(--line)}
@@ -186,6 +212,8 @@ footer .note{max-width:700px;margin:0 auto 8px}
     <div class="tab" data-tab="insight" onclick="switchTab('insight')">🧠 Customer Insight</div>
     <div class="tab" data-tab="idea" onclick="switchTab('idea')">💡 ไอเดียคอนเทนต์ WISAMIN</div>
     <div class="tab" data-tab="trend" onclick="switchTab('trend')">📈 เทรนด์</div>
+    <div class="tab" data-tab="channel" onclick="switchTab('channel')">📱 ช่อง WISAMIN</div>
+    <div class="tab" data-tab="live" onclick="switchTab('live')">🔴 ไลฟ์สด</div>
   </div>
 
   <div id="tab-feed">
@@ -197,6 +225,8 @@ footer .note{max-width:700px;margin:0 auto 8px}
   <div id="tab-insight" class="hide"><div class="ins" id="insights"></div></div>
   <div id="tab-idea" class="hide"><div class="section-title">คอนเทนต์ต่อยอดที่ใช้ได้จริง + ปลอดคำต้องห้าม อย.</div><div class="ins" id="ideas"></div></div>
   <div id="tab-trend" class="hide"><div class="trendlist" id="trends"></div></div>
+  <div id="tab-channel" class="hide"><div id="channelAudit"></div></div>
+  <div id="tab-live" class="hide"><div id="livePlaybook"></div></div>
 
   <footer>
     <div class="note">ข้อมูลรวบรวมจากการค้นเว็บสาธารณะ (TikTok/Facebook/YouTube/X) เพื่อวิเคราะห์การแข่งขัน · ยอด engagement จัดระดับเชิงคุณภาพ ดูวิธีเก็บตัวเลขแม่นยำใน PLAYBOOK.md</div>
@@ -240,6 +270,8 @@ function render(){
   renderInsights();
   renderIdeas();
   renderTrends();
+  renderChannel();
+  renderLive();
 }
 
 function renderFilters(){
@@ -304,9 +336,96 @@ function renderTrends(){
     <div class="trend"><div class="num">${i+1}</div><div>${t}</div></div>`).join('');
 }
 
+function renderChannel(){
+  const el=document.getElementById('channelAudit');
+  const c=current.wisamin_channel_audit;
+  if(!c){el.innerHTML='<p style="color:var(--muted)">ยังไม่มีข้อมูลตรวจสอบช่อง WISAMIN ในรายงานวันนี้</p>';return;}
+  const lh=c.live_history_correction;
+  el.innerHTML=`
+    <div class="chanwrap">
+      <div class="chanhead">
+        <div class="info">
+          <h3>📱 ${c.handle||''} <a class="link" href="${c.url}" target="_blank" rel="noopener">เปิดช่อง ↗</a></h3>
+          <p>แพลตฟอร์ม: ${c.platform||'-'}</p>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="n">${c.followers||'-'}</div><div class="l">ผู้ติดตาม${c.followers_verification_needed?' ⚠️':''}</div></div>
+          <div class="stat"><div class="n">${c.total_likes||'-'}</div><div class="l">ไลก์รวม</div></div>
+        </div>
+      </div>
+      ${c.followers_verification_needed?`<div class="compliance">⚠️ <b>ตัวเลขผู้ติดตามยังไม่ยืนยัน:</b> มีสัญญาณจากเครื่องมือบุคคลที่ 3 ว่าอาจสูงกว่านี้มาก แต่ตัวเลขไม่ตรงกันเอง 2 ครั้งที่ดึงข้อมูล — ควรเช็คมือก่อนใช้วางแผน</div>`:''}
+      ${lh?`<div class="livewhy">🔄 <b>แก้ไขข้อมูลจากรอบก่อน:</b> ${lh.note} <br><b>หลักฐาน:</b> ${lh.evidence} <br><b>ผลต่อแผน:</b> ${lh.implication}</div>`:''}
+      <div class="chansec">
+        <h4>สายผลิตภัณฑ์ที่เห็นบนช่อง</h4>
+        <div class="chantags">${(c.product_lines_observed||[]).map(p=>`<span class="chantag">${p}</span>`).join('')}</div>
+      </div>
+      <div class="chansec"><h4>สไตล์คอนเทนต์ปัจจุบัน</h4><div class="why">${c.current_style||'-'}</div></div>
+      ${(c.recent_posts_found||[]).length?`<div class="chansec">
+        <h4>คลิปล่าสุดที่พบ (จากการค้นเว็บสาธารณะ)</h4>
+        <div class="chanlist">${(c.recent_posts_found||[]).map(p=>`<div class="gap-item"><b>${p.product_line||''}:</b> "${p.caption||''}" <br><span style="color:var(--muted)">${p.note||''}</span></div>`).join('')}</div>
+      </div>`:''}
+      <div class="chansec">
+        <h4>⚠️ ช่องว่างที่พบ</h4>
+        <div class="chanlist">${(c.gaps||[]).map(g=>`<div class="gap-item">${g}</div>`).join('')}</div>
+      </div>
+      <div class="chansec">
+        <h4>✅ Quick Win ทำได้ทันที</h4>
+        <div class="chanlist">${(c.quick_wins||[]).map(w=>`<div class="win-item">${w}</div>`).join('')}</div>
+      </div>
+    </div>`;
+}
+
+function renderLive(){
+  const el=document.getElementById('livePlaybook');
+  const p=current.live_playbook;
+  if(!p){el.innerHTML='<p style="color:var(--muted)">ยังไม่มีแผนไลฟ์สดในรายงานวันนี้</p>';return;}
+  const tr=p.team_roles_small_account;
+  el.innerHTML=`
+    <div class="chanwrap">
+      <div class="livewhy"><b>ทำไมต้องไลฟ์ตอนนี้:</b> ${p.why_now||'-'}</div>
+      <div class="compliance">⚠️ <b>ข้อควรระวัง:</b> ${p.compliance_note||'-'}</div>
+      <div class="chansec"><h4>ความถี่ที่แนะนำ</h4><div class="cadence">${p.cadence||'-'}</div></div>
+      ${(p.week_plan||[]).length?`<div class="chansec">
+        <h4>แผนสัปดาห์นี้ (${p.week_plan[0].date} → ${p.week_plan[p.week_plan.length-1].date})</h4>
+        <div class="grid">${p.week_plan.map(w=>`
+          <div class="card" style="${w.type==='live'?'border-color:var(--tiktok)':''}">
+            <div class="top"><span class="badge ${w.type==='live'?'b-tiktok':'b-facebook'}">${w.type==='live'?'🔴 LIVE':'📱 ฟีด'}</span><span class="cat">${w.date}</span></div>
+            <div class="brand">${w.day||''}</div>
+            <h3 style="font-size:14px">${w.theme||''}</h3>
+            <div class="why"><b>Hook:</b> ${w.hook||''}</div>
+            ${w.notes?`<div class="cat">${w.notes}</div>`:''}
+          </div>`).join('')}</div>
+      </div>`:''}
+      <div class="chansec">
+        <h4>รันดาวน์ไลฟ์วันแรก (Timeline)</h4>
+        <div class="timeline">${(p.rundown||[]).map(r=>`
+          <div class="tl-item">
+            <div class="tl-time">${r.time||''}</div>
+            <div class="tl-body"><h4>${r.segment||''}</h4><p>${r.detail||''}</p></div>
+          </div>`).join('')}</div>
+      </div>
+      ${tr?`<div class="chansec">
+        <h4>แบ่งหน้าที่ทีม (บัญชีเล็ก)</h4>
+        <div class="chanlist">
+          <div class="win-item"><b>คนพูดหน้ากล้อง:</b> ${tr.host||''}</div>
+          <div class="win-item"><b>คนตอบคอมเมนต์:</b> ${tr.comment_handler||''}</div>
+          <div class="win-item"><b>ทีมแพ็ก/ส่งของ:</b> ${tr.packing_note||''}</div>
+        </div>
+      </div>`:''}
+      <div class="chansec">
+        <h4>เทคนิคเฉพาะบัญชีเล็ก</h4>
+        <div class="chanlist">${(p.growth_tactics_small_account||[]).map(g=>`<div class="win-item">${g}</div>`).join('')}</div>
+      </div>
+      <div class="chansec">
+        <h4>วัดผลด้วย KPI เหล่านี้</h4>
+        <div class="kpirow">${(p.kpis||[]).map(k=>`<span class="kpichip">${k}</span>`).join('')}</div>
+      </div>
+    </div>`;
+}
+
 function switchTab(t){
   document.querySelectorAll('.tab').forEach(el=>el.classList.toggle('active',el.dataset.tab===t));
-  ['feed','insight','idea','trend'].forEach(x=>document.getElementById('tab-'+x).classList.toggle('hide',x!==t));
+  ['feed','insight','idea','trend','channel','live'].forEach(x=>document.getElementById('tab-'+x).classList.toggle('hide',x!==t));
 }
 
 initDates();render();
